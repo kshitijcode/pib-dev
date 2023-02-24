@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
-  namespace: myapp
+  name: myappjal
+  namespace: myappjal
   labels:
-    app.kubernetes.io/name: myapp
+    app.kubernetes.io/name: myappjal
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: myappjal
   template:
     metadata:
       labels:
-        app: myapp
-        version: v-2023-02-23-03-32-14
+        app: myappjal
+        version: v-0-0-0
     spec:
       containers:
         - name: app
-          image: k3d-registry.localhost:5500/myapp:local
+          image: k3d-registry.localhost:5500/myappjal:local
           imagePullPolicy: Always
 
           ports:
@@ -63,8 +63,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp
-  namespace: myapp
+  name: myappjal
+  namespace: myappjal
 spec:
   type: NodePort
   ports:
@@ -74,4 +74,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: myapp
+    app: myappjal
